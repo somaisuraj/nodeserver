@@ -30,9 +30,10 @@ app.use((req, res, next) => {
 //     res.render('maintenance.hbs');
 // }); this is commented so other routes will work as defined. This is used for default special page
 // so when this runs no routes work(next(); is not defined so..)
-
 // this use fuction is placed here because express run from top to botton.
 // and we want to avoid it running , we want to run after maintenance.hbs
+
+
 app.use(express.static(__dirname + '/public'));
 
 // this is also hbs (handler.js)  feature. when we define this registerHelper.
@@ -65,6 +66,12 @@ app.get('/bad', (req, res) => {
    try: 'try another page'
  });
 
+});
+
+app.get('/testimony', (req, res) => {
+res.render('testimony.hbs', {
+  pageTitle: 'Testimoney'
+});
 });
 
 app.listen(port, () => {
